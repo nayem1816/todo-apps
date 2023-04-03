@@ -8,6 +8,7 @@ import RemainingTodo from "./pages/RemainingTodo";
 import CompletedTodo from "./pages/CompletedTodo";
 import DeletedTodo from "./pages/DeletedTodo";
 import Protected from "./components/LoginRegistration/Protected";
+import SingleTodoDetails from "./pages/SingleTodoDetails";
 
 function App() {
   return (
@@ -56,6 +57,14 @@ function App() {
           element={
             <Protected>
               <DeletedTodo />
+            </Protected>
+          }
+        />
+        <Route
+          path="/todo-details/:id"
+          element={
+            <Protected>
+              <SingleTodoDetails />
             </Protected>
           }
         />
