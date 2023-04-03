@@ -12,8 +12,6 @@ const Layout = () => {
   if (loading) {
     return <Loading />;
   }
-
-  console.log(user);
   return (
     <div>
       <Navbar user={user} />
