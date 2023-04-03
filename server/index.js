@@ -3,11 +3,6 @@ const dotenv = require("dotenv").config();
 
 const app = require("./app");
 
-// mongoose.set('strictQuery', false);
-// mongoose.connect(process.env.DATABASE).then(() => {
-//     console.log('Database is connected successfully.');
-// });
-
 const URI = process.env.DATABASE;
 mongoose.set("strictQuery", false);
 mongoose.connect(URI, (err) => {
