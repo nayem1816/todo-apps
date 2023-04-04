@@ -4,7 +4,7 @@ import { toast } from "react-toastify";
 
 const TodoDetails = ({ todo }) => {
   const handleComplete = (id) => {
-    fetch(`http://localhost:8080/api/v1/to-do/${id}`, {
+    fetch(`https://todo-apps-neon.vercel.app/api/v1/to-do/${id}`, {
       method: "put",
       headers: {
         "Content-Type": "application/json",
@@ -24,7 +24,7 @@ const TodoDetails = ({ todo }) => {
   };
 
   const handleDelete = (id) => {
-    fetch(`http://localhost:8080/api/v1/to-do/${id}`, {
+    fetch(`https://todo-apps-neon.vercel.app/api/v1/to-do/${id}`, {
       method: "put",
       headers: {
         "Content-Type": "application/json",
@@ -33,7 +33,7 @@ const TodoDetails = ({ todo }) => {
     })
       .then((res) => res.json())
       .then((data) => {
-        toast.success("Todo Deleted Successfully", {
+        toast.error("Todo Deleted Successfully", {
           position: "top-right",
           autoClose: 1000,
           hideProgressBar: false,
@@ -44,7 +44,7 @@ const TodoDetails = ({ todo }) => {
   };
 
   const handlePermanentDelete = (id) => {
-    fetch(`http://localhost:8080/api/v1/to-do/${id}`, {
+    fetch(`https://todo-apps-neon.vercel.app/api/v1/to-do/${id}`, {
       method: "delete",
       headers: {
         "Content-Type": "application/json",
@@ -52,7 +52,7 @@ const TodoDetails = ({ todo }) => {
     })
       .then((res) => res.json())
       .then((data) => {
-        toast.success("Todo Deleted Successfully", {
+        toast.error("Todo Deleted Successfully", {
           position: "top-right",
           autoClose: 1000,
           hideProgressBar: false,

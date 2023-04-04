@@ -6,6 +6,7 @@ import { useAuthState } from "react-firebase-hooks/auth";
 import auth from "../../../firebase.init";
 import Loading from "../../Loading/Loading";
 import { useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
 
 const NewTodoModal = ({ show, setShow }) => {
   const [user, loading] = useAuthState(auth);
@@ -32,7 +33,7 @@ const NewTodoModal = ({ show, setShow }) => {
       details: data.details,
       dueDate: value.startDate,
     };
-    fetch("http://localhost:8080/api/v1/to-do", {
+    fetch("https://todo-apps-neon.vercel.app/api/v1/to-do", {
       method: "post",
       headers: {
         "Content-Type": "application/json",
@@ -41,8 +42,13 @@ const NewTodoModal = ({ show, setShow }) => {
     })
       .then((res) => res.json())
       .then((data) => {
+        toast.success("Todo Created Successfully", {
+          position: "top-right",
+          autoClose: 1000,
+          hideProgressBar: false,
+          closeOnClick: true,
+        });
         window.location.reload();
-        navigate.push("/");
         onClose();
       });
   };

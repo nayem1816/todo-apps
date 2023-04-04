@@ -10,7 +10,7 @@ const RemainingTodoList = () => {
 
   useEffect(() => {
     fetch(
-      `http://localhost:8080/api/v1/to-do?sort=-createdAt&status=remaining&userEmail=${user?.email}`
+      `https://todo-apps-neon.vercel.app/api/v1/to-do?sort=-createdAt&status=remaining&userEmail=${user?.email}`
     )
       .then((res) => res.json())
       .then((data) => {

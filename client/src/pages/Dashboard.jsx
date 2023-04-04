@@ -20,7 +20,7 @@ const Dashboard = () => {
 
   useEffect(() => {
     fetch(
-      `http://localhost:8080/api/v1/to-do?sort=-createdAt&userEmail=${user?.email}`
+      `https://todo-apps-neon.vercel.app/api/v1/to-do?sort=-createdAt&userEmail=${user?.email}`
     )
       .then((res) => res.json())
       .then((data) => {
@@ -28,7 +28,7 @@ const Dashboard = () => {
       });
 
     fetch(
-      `http://localhost:8080/api/v1/to-do?status=remaining&userEmail=${user?.email}`
+      `https://todo-apps-neon.vercel.app/api/v1/to-do?status=remaining&userEmail=${user?.email}`
     )
       .then((res) => res.json())
       .then((data) => {
@@ -36,7 +36,7 @@ const Dashboard = () => {
       });
 
     fetch(
-      `http://localhost:8080/api/v1/to-do?status=complete&userEmail=${user?.email}`
+      `https://todo-apps-neon.vercel.app/api/v1/to-do?status=complete&userEmail=${user?.email}`
     )
       .then((res) => res.json())
       .then((data) => {
@@ -44,7 +44,7 @@ const Dashboard = () => {
       });
 
     fetch(
-      `http://localhost:8080/api/v1/to-do?status=deleted&userEmail=${user?.email}`
+      `https://todo-apps-neon.vercel.app/api/v1/to-do?status=deleted&userEmail=${user?.email}`
     )
       .then((res) => res.json())
       .then((data) => {

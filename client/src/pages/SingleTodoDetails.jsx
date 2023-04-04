@@ -13,7 +13,7 @@ const SingleTodoDetails = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    fetch(`http://localhost:8080/api/v1/to-do/${id}`)
+    fetch(`https://todo-apps-neon.vercel.app/api/v1/to-do/${id}`)
       .then((res) => res.json())
       .then((data) => {
         setSingleTodo(data);
@@ -30,7 +30,7 @@ const SingleTodoDetails = () => {
       details: data.details,
       dueDate: value.startDate,
     };
-    fetch(`http://localhost:8080/api/v1/to-do/${id}`, {
+    fetch(`https://todo-apps-neon.vercel.app/api/v1/to-do/${id}`, {
       method: "put",
       headers: {
         "Content-Type": "application/json",
@@ -50,7 +50,7 @@ const SingleTodoDetails = () => {
   };
 
   const handleDelete = (id) => {
-    fetch(`http://localhost:8080/api/v1/to-do/${id}`, {
+    fetch(`https://todo-apps-neon.vercel.app/api/v1/to-do/${id}`, {
       method: "put",
       headers: {
         "Content-Type": "application/json",
@@ -69,7 +69,7 @@ const SingleTodoDetails = () => {
       });
   };
   const handleComplete = (id) => {
-    fetch(`http://localhost:8080/api/v1/to-do/${id}`, {
+    fetch(`https://todo-apps-neon.vercel.app/api/v1/to-do/${id}`, {
       method: "put",
       headers: {
         "Content-Type": "application/json",
@@ -88,7 +88,7 @@ const SingleTodoDetails = () => {
   };
 
   const handlePermanentDelete = (id) => {
-    fetch(`http://localhost:8080/api/v1/to-do/${id}`, {
+    fetch(`https://todo-apps-neon.vercel.app/api/v1/to-do/${id}`, {
       method: "delete",
       headers: {
         "Content-Type": "application/json",
