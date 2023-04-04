@@ -1,5 +1,6 @@
 import { Route, Routes } from "react-router-dom";
 import Layout from "./Layout/Layout";
+import { ToastContainer } from "react-toastify";
 import Login from "./pages/Login";
 import Registration from "./pages/Registration";
 import Dashboard from "./pages/Dashboard";
@@ -12,68 +13,71 @@ import SingleTodoDetails from "./pages/SingleTodoDetails";
 
 function App() {
   return (
-    <Routes>
-      <Route
-        path="/"
-        element={
-          <Protected>
-            <Layout />
-          </Protected>
-        }>
+    <>
+      <Routes>
         <Route
           path="/"
           element={
             <Protected>
-              <Dashboard />
+              <Layout />
             </Protected>
-          }
-        />
-        <Route
-          path="/all-todo"
-          element={
-            <Protected>
-              <AllTodo />
-            </Protected>
-          }
-        />
-        <Route
-          path="/remaining-todo"
-          element={
-            <Protected>
-              <RemainingTodo />
-            </Protected>
-          }
-        />
-        <Route
-          path="/completed-todo"
-          element={
-            <Protected>
-              <CompletedTodo />
-            </Protected>
-          }
-        />
-        <Route
-          path="/deleted-todo"
-          element={
-            <Protected>
-              <DeletedTodo />
-            </Protected>
-          }
-        />
-        <Route
-          path="/todo-details/:id"
-          element={
-            <Protected>
-              <SingleTodoDetails />
-            </Protected>
-          }
-        />
+          }>
+          <Route
+            path="/"
+            element={
+              <Protected>
+                <Dashboard />
+              </Protected>
+            }
+          />
+          <Route
+            path="/all-todo"
+            element={
+              <Protected>
+                <AllTodo />
+              </Protected>
+            }
+          />
+          <Route
+            path="/remaining-todo"
+            element={
+              <Protected>
+                <RemainingTodo />
+              </Protected>
+            }
+          />
+          <Route
+            path="/completed-todo"
+            element={
+              <Protected>
+                <CompletedTodo />
+              </Protected>
+            }
+          />
+          <Route
+            path="/deleted-todo"
+            element={
+              <Protected>
+                <DeletedTodo />
+              </Protected>
+            }
+          />
+          <Route
+            path="/todo-details/:id"
+            element={
+              <Protected>
+                <SingleTodoDetails />
+              </Protected>
+            }
+          />
+          <Route path="*" element={<h1>404 Not Found</h1>} />
+        </Route>
+        <Route path="/login" element={<Login />} />
+        <Route path="/register" element={<Registration />} />
         <Route path="*" element={<h1>404 Not Found</h1>} />
-      </Route>
-      <Route path="/login" element={<Login />} />
-      <Route path="/register" element={<Registration />} />
-      <Route path="*" element={<h1>404 Not Found</h1>} />
-    </Routes>
+      </Routes>
+      <ToastContainer />
+    </>
   );
 }
 
