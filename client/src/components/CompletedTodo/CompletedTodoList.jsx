@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import TodoDetails from "../Shared/TodoDetails/TodoDetails";
 import { useAuthState } from "react-firebase-hooks/auth";
 import auth from "../../firebase.init";
-import Loading from '../Loading/Loading';
+import Loading from "../Loading/Loading";
 
 const CompletedTodoList = () => {
   const [user, loading] = useAuthState(auth);
@@ -25,7 +25,7 @@ const CompletedTodoList = () => {
   return (
     <div className="p-3 border-2 border-gray-200 border-dashed rounded-lg grid grid-cols-1 gap-5">
       {allTodo?.total > 0 ? (
-        <div className="">
+        <div className="grid grid-cols-1 gap-5">
           {allTodo?.result?.map((todo) => (
             <TodoDetails key={todo._id} todo={todo} />
           ))}

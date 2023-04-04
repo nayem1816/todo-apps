@@ -25,7 +25,7 @@ const RemainingTodoList = () => {
   return (
     <div className="p-3 border-2 border-gray-200 border-dashed rounded-lg grid grid-cols-1 gap-5">
       {allTodo?.total > 0 ? (
-        <div className="">
+        <div className="grid grid-cols-1 gap-5">
           {allTodo?.result?.map((todo) => (
             <TodoDetails key={todo._id} todo={todo} />
           ))}
