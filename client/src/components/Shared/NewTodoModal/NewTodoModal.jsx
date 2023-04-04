@@ -5,7 +5,6 @@ import { useForm } from "react-hook-form";
 import { useAuthState } from "react-firebase-hooks/auth";
 import auth from "../../../firebase.init";
 import Loading from "../../Loading/Loading";
-import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 
 const NewTodoModal = ({ show, setShow }) => {
