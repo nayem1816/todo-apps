@@ -23,6 +23,45 @@ const TodoDetails = ({ todo }) => {
       });
   };
 
+  const handleDelete = (id) => {
+    fetch(`http://localhost:8080/api/v1/to-do/${id}`, {
+      method: "put",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ status: "deleted", isDeleted: true }),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        toast.success("Todo Deleted Successfully", {
+          position: "top-right",
+          autoClose: 1000,
+          hideProgressBar: false,
+          closeOnClick: true,
+        });
+        window.location.reload();
+      });
+  };
+
+  const handlePermanentDelete = (id) => {
+    fetch(`http://localhost:8080/api/v1/to-do/${id}`, {
+      method: "delete",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        toast.success("Todo Deleted Successfully", {
+          position: "top-right",
+          autoClose: 1000,
+          hideProgressBar: false,
+          closeOnClick: true,
+        });
+        window.location.reload();
+      });
+  };
+
   return (
     <div className="border px-4 py-2 rounded-lg flex justify-between items-center gap-5">
       <div className="flex gap-6 items-center">
@@ -30,7 +69,7 @@ const TodoDetails = ({ todo }) => {
           onClick={() => handleComplete(todo?._id)}
           id="checkbox-2"
           type="checkbox"
-          disabled={todo?.status === "complete"}
+          disabled={todo?.status === "complete" || todo?.status === "deleted"}
           value=""
           className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 dark:focus:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
         />
@@ -64,16 +103,27 @@ const TodoDetails = ({ todo }) => {
         </div>
       </div>
       <div className="flex gap-5">
-        <Link to={`/todo-details/${todo?._id}`}>
-          <span className="bg-green-100 text-green-800 text-xs font-medium px-3 py-1 rounded dark:bg-gray-700 dark:text-green-400 border border-green-400">
-            Edit
-          </span>
-        </Link>
-        <Link to={`/todo-details/${todo?._id}`}>
-          <span className="bg-red-100 text-red-800 text-xs font-medium px-3 py-1 rounded dark:bg-gray-700 dark:text-red-400 border border-red-400">
-            Delete
-          </span>
-        </Link>
+        {todo?.status !== "deleted" && (
+          <Link to={`/todo-details/${todo?._id}`}>
+            <span className="bg-green-100 text-green-800 text-xs font-medium px-3 py-1 rounded dark:bg-gray-700 dark:text-green-400 border border-green-400">
+              Edit
+            </span>
+          </Link>
+        )}
+        {todo?.status !== "deleted" && (
+          <Link onClick={() => handleDelete(todo?._id)} to="">
+            <span className="bg-red-100 text-red-800 text-xs font-medium px-3 py-1 rounded dark:bg-gray-700 dark:text-red-400 border border-red-400">
+              Delete
+            </span>
+          </Link>
+        )}
+        {todo?.status === "deleted" && (
+          <Link onClick={() => handlePermanentDelete(todo?._id)} to="">
+            <span className="bg-red-100 text-red-800 text-xs font-medium px-3 py-1 rounded dark:bg-gray-700 dark:text-red-400 border border-red-400">
+              Permanent Delete
+            </span>
+          </Link>
+        )}
       </div>
     </div>
   );
