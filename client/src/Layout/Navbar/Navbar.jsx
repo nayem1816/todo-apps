@@ -1,8 +1,14 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import logo from "../../assets/logo/logo.png";
+import NewTodoModal from "../../components/Shared/NewTodoModal/NewTodoModal";
 
 const Navbar = ({ user }) => {
+  const [show, setShow] = React.useState(false);
+
+  const onClick = () => {
+    setShow(true);
+  };
   return (
     <nav className="fixed top-0 z-50 w-full bg-white border-b border-gray-200 dark:bg-gray-800 dark:border-gray-700">
       <div className="px-3 py-3 lg:px-5 lg:pl-3">
@@ -29,12 +35,21 @@ const Navbar = ({ user }) => {
             </button>
             <Link to="/" className="flex ml-2 md:mr-24">
               <img src={logo} className="h-8 mr-3" alt="FlowBite Logo" />
-              <span className="self-center text-xl font-semibold sm:text-2xl whitespace-nowrap dark:text-white">
+              <span className="self-center text-sm font-semibold md:text-2xl whitespace-nowrap dark:text-white">
                 My TODOs
               </span>
             </Link>
           </div>
           <div className="flex items-center">
+            <div className="">
+              <button
+                onClick={onClick}
+                type="button"
+                className="text-white bg-gradient-to-br from-purple-600 to-blue-500 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium rounded-lg text-sm px-2 md:px-5 py-2.5 text-center mr-2 md:mr-5">
+                Add New
+              </button>
+              <NewTodoModal show={show} setShow={setShow} />
+            </div>
             <div className="flex items-center ml-3">
               <div>
                 <button
@@ -44,45 +59,11 @@ const Navbar = ({ user }) => {
                   data-dropdown-toggle="dropdown-user">
                   <span className="sr-only">Open user menu</span>
                   <img
-                    className="w-8 h-8 rounded-full"
+                    className="w-10 h-10 rounded-full"
                     src={user?.photoURL}
                     alt="user_photo"
                   />
                 </button>
-              </div>
-              <div
-                className="z-50 hidden my-4 text-base list-none bg-white divide-y divide-gray-100 rounded shadow dark:bg-gray-700 dark:divide-gray-600"
-                id="dropdown-user">
-                <div className="px-4 py-3" role="none">
-                  <p
-                    className="text-sm text-gray-900 dark:text-white"
-                    role="none">
-                    Neil Sims
-                  </p>
-                  <p
-                    className="text-sm font-medium text-gray-900 truncate dark:text-gray-300"
-                    role="none">
-                    neil.sims@flowbite.com
-                  </p>
-                </div>
-                <ul className="py-1" role="none">
-                  <li>
-                    <Link
-                      to="/"
-                      className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-600 dark:hover:text-white"
-                      role="menuitem">
-                      Dashboard
-                    </Link>
-                  </li>
-                  <li>
-                    <Link
-                      to="/"
-                      className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-600 dark:hover:text-white"
-                      role="menuitem">
-                      Sign Out
-                    </Link>
-                  </li>
-                </ul>
               </div>
             </div>
           </div>

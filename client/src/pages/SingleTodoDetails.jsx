@@ -108,7 +108,7 @@ const SingleTodoDetails = () => {
 
   return (
     <div>
-      <h2 className="text-5xl mb-5">My Todo Details</h2>
+      <h2 className="text-2xl lg:text-5xl mb-5">My Todo Details</h2>
       <div className="todo-details p-3 border-2 border-gray-200 border-dashed rounded-lg m-2 grid grid-cols-1 gap-5">
         <div className="button">
           {singleTodo?.data?.status === "remaining" && (
@@ -161,7 +161,7 @@ const SingleTodoDetails = () => {
             <label
               htmlFor="date"
               className="block mb-2 text-xl font-medium text-gray-900 dark:text-white">
-              {edit ? "Edit Your Date" : "Your Date"}
+              {edit ? "Edit Your Due Date" : "Your Due Date"}
             </label>
 
             {edit ? (
@@ -185,7 +185,7 @@ const SingleTodoDetails = () => {
             onClick={() => setEdit(!edit)}
             type="button"
             className="text-white bg-yellow-700 hover:bg-yellow-800 focus:ring-4 focus:outline-none focus:ring-yellow-300 font-medium rounded-lg text-sm w-full sm:w-auto px-7 py-2.5 text-center dark:bg-yellow-600 dark:hover:bg-yellow-700 dark:focus:ring-yellow-800 mr-5 mb-2">
-            Edit
+            {edit ? "Cancel Edit" : "Edit"}
           </button>
           {edit && (
             <button
