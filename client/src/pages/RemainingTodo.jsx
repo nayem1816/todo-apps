@@ -4,7 +4,7 @@ import RemainingTodoList from "../components/RemainingTodo/RemainingTodoList";
 const RemainingTodo = () => {
   return (
     <div>
-      <h2 className="text-xl mb-5">All Todo List</h2>
+      <h2 className="text-xl mb-5">Remaining Todo List</h2>
       <RemainingTodoList />
     </div>
   );
