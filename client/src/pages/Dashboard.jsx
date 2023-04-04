@@ -62,7 +62,6 @@ const Dashboard = () => {
       (todo.status === "remaining") | (todo.status === "complete") &&
       todo.isDeleted === false
   );
-  console.log(todoWithoutDeleted);
 
   return (
     <div>

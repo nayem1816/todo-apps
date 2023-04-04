@@ -7,15 +7,20 @@ import auth from "../firebase.init";
 import Loading from "../components/Loading/Loading";
 
 const Layout = () => {
+  const [showSidebar, setShowSidebar] = React.useState(false);
   const [user, loading] = useAuthState(auth);
+
+  const handleSidebarShow = () => {
+    setShowSidebar(!showSidebar);
+  };
 
   if (loading) {
     return <Loading />;
   }
   return (
     <div>
-      <Navbar user={user} />
-      <Aside />
+      <Navbar user={user} handleSidebarShow={handleSidebarShow} />
+      <Aside showSidebar={showSidebar} setShowSidebar={setShowSidebar} />
       <Body />
     </div>
   );
