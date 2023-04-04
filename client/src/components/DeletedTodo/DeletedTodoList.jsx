@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from "react";
 import TodoDetails from "../Shared/TodoDetails/TodoDetails";
 
-const CompletedTodoList = () => {
+const DeletedTodoList = () => {
   const [allTodo, setAllTodo] = useState([]);
 
   useEffect(() => {
-    fetch("http://localhost:8080/api/v1/to-do?sort=-createdAt&status=complete")
+    fetch("http://localhost:8080/api/v1/to-do?sort=-createdAt&status=deleted")
       .then((res) => res.json())
       .then((data) => {
         setAllTodo(data.data);
@@ -20,4 +20,4 @@ const CompletedTodoList = () => {
   );
 };
 
-export default CompletedTodoList;
+export default DeletedTodoList;
