@@ -15,25 +15,25 @@ const Dashboard = () => {
   const [deletedTodo, setDeletedTodo] = useState([]);
 
   useEffect(() => {
-    fetch("http://localhost:8080/api/v1/to-do?sort=-createdAt")
+    fetch("https://todo-apps-neon.vercel.app/api/v1/to-do?sort=-createdAt")
       .then((res) => res.json())
       .then((data) => {
         setTodoData(data.data);
       });
 
-    fetch("http://localhost:8080/api/v1/to-do?status=remaining")
+    fetch("https://todo-apps-neon.vercel.app/api/v1/to-do?status=remaining")
       .then((res) => res.json())
       .then((data) => {
         setRemainingTodo(data.data);
       });
 
-    fetch("http://localhost:8080/api/v1/to-do?status=complete")
+    fetch("https://todo-apps-neon.vercel.app/api/v1/to-do?status=complete")
       .then((res) => res.json())
       .then((data) => {
         setCompletedTodo(data.data);
       });
 
-    fetch("http://localhost:8080/api/v1/to-do?status=deleted")
+    fetch("https://todo-apps-neon.vercel.app/api/v1/to-do?status=deleted")
       .then((res) => res.json())
       .then((data) => {
         setDeletedTodo(data.data);

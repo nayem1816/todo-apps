@@ -32,7 +32,7 @@ const NewTodoModal = ({ show, setShow }) => {
       details: data.details,
       dueDate: value.startDate,
     };
-    fetch("http://localhost:8080/api/v1/to-do", {
+    fetch("https://todo-apps-neon.vercel.app/api/v1/to-do", {
       method: "post",
       headers: {
         "Content-Type": "application/json",

@@ -4,7 +4,7 @@ import { toast } from "react-toastify";
 
 const TodoDetails = ({ todo }) => {
   const handleComplete = (id) => {
-    fetch(`http://localhost:8080/api/v1/to-do/${id}`, {
+    fetch(`https://todo-apps-neon.vercel.app/api/v1/to-do/${id}`, {
       method: "put",
       headers: {
         "Content-Type": "application/json",
