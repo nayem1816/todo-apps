@@ -13,8 +13,6 @@ const NewTodoModal = ({ show, setShow }) => {
   const [value, setValue] = useState("");
   const { register, handleSubmit } = useForm();
 
-  const navigate = useNavigate();
-
   const handleValueChange = (newValue) => {
     setValue(newValue);
   };
